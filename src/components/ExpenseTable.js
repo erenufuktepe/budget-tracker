@@ -14,6 +14,11 @@ const ExpenseTable = ({
     setEditValues({ ...editValues, [field]: value });
   };
 
+  const capitalizeFirst = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+
   const calculateRemainingPayments = (endDate, frequency) => {
   if (!endDate || !frequency) return null;
 
@@ -92,11 +97,15 @@ const ExpenseTable = ({
                 </td>
                 <td className={styles.td}>{exp.remainingPayments ?? "-"}</td>
                 <td>
-                  <input
+                  <select
                     className={styles.input}
                     value={editValues.category || ""}
                     onChange={(e) => handleChange("category", e.target.value)}
-                  />
+                  >
+                    <option value="need">Need</option>
+                    <option value="want">Want</option>
+                    <option value="saving">Saving</option>
+                  </select>
                 </td>
                 <td>
                   <input
@@ -121,16 +130,24 @@ const ExpenseTable = ({
                   >
                     Save
                   </button>
+                  <button
+                    className={`${styles.actionButton} ${styles.cancel}`}
+                    onClick={() => onEdit(null)} // ✅ Resets editing state
+                  >
+                    Cancel
+                  </button>
                 </td>
               </tr>
             ) : (
               <tr key={exp.id}>
                 <td className={styles.td}>{exp.name}</td>
                 <td className={styles.td}>${exp.cost.toFixed(2)}</td>
-                <td className={styles.td}>{exp.frequency}</td>
+                <td className={styles.td}>{capitalizeFirst(exp.frequency)}</td>
                 <td className={styles.td}>{exp.endDate || "-"}</td>
                 <td className={styles.td}>{exp.remainingPayments ?? "-"}</td>
-                <td className={styles.td}>{exp.category || "-"}</td>
+                <td className={styles.td}>
+                  {capitalizeFirst(exp.category) || "-"}
+                </td>
                 <td className={styles.td}>{exp.payer}</td>
                 <td className={styles.td}>
                   <button

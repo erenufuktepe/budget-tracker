@@ -17,3 +17,35 @@
   margin-bottom: 1rem;
   color: #333;
 }
+
+
+.budgetText {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  margin-bottom: 2rem;
+}
+
+.budgetText h3 {
+  margin-top: 0;
+  color: #343a40;
+}
+
+.budgetText p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.budgetText ul {
+  list-style: disc inside;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  color: #333;
+}
+
+.budgetText li {
+  margin-bottom: 0.25rem;
+}
+

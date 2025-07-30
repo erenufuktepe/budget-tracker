@@ -8,6 +8,10 @@ const IncomeTable = ({ incomes, onDelete, onEdit, editingId, onSaveEdit }) => {
     setEditValues({ ...editValues, [field]: value });
   };
 
+  const capitalizeFirst = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   if (incomes.length === 0) return <p>No income added yet.</p>;
 
   return (
@@ -29,7 +33,7 @@ const IncomeTable = ({ incomes, onDelete, onEdit, editingId, onSaveEdit }) => {
                 <td>
                   <input
                     className={styles.input}
-                    value={editValues.name}
+                    value={editValues.source}
                     onChange={(e) => handleChange("name", e.target.value)}
                   />
                 </td>
@@ -56,17 +60,23 @@ const IncomeTable = ({ incomes, onDelete, onEdit, editingId, onSaveEdit }) => {
                 <td>
                   <button
                     className={`${styles.actionButton} ${styles.save}`}
-                    onClick={() => onSaveEdit({ ...inc, ...editValues })}
+                    onClick={() => onSaveEdit(editValues)}
                   >
                     Save
+                  </button>
+                  <button
+                    className={`${styles.actionButton} ${styles.cancel}`}
+                    onClick={() => onEdit(null)} 
+                  >
+                    Cancel
                   </button>
                 </td>
               </tr>
             ) : (
               <tr key={inc.id}>
-                <td className={styles.td}>{inc.name}</td>
+                <td className={styles.td}>{inc.source}</td>
                 <td className={styles.td}>${inc.amount.toFixed(2)}</td>
-                <td className={styles.td}>{inc.frequency}</td>
+                <td className={styles.td}>{capitalizeFirst(inc.frequency)}</td>
                 <td className={styles.td}>
                   <button
                     className={`${styles.actionButton} ${styles.edit}`}

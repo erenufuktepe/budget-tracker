@@ -70,7 +70,7 @@
   grid-column: 1 / -1;
   padding: 0.6rem 1rem;
   font-size: 1rem;
-  background-color: #007bff; /* Blue */
+  background-color: #007bff;
   color: white;
   font-weight: bold;
   border: none;
@@ -79,5 +79,14 @@
 }
 
 .button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
+}
+
+.cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #5a6268;
 }

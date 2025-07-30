@@ -60,3 +60,12 @@
   background-color: #f8f9fa;
   font-weight: bold;
 }
+
+.cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #5a6268;
+}

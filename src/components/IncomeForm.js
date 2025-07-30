@@ -4,7 +4,7 @@ import styles from './IncomeForm.module.css';
 const IncomeForm = ({ onAdd }) => {
   const [source, setSource] = useState('');
   const [amount, setAmount] = useState('');
-  const [frequency, setFrequency] = useState('Monthly');
+  const [frequency, setFrequency] = useState('monthly');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const IncomeForm = ({ onAdd }) => {
     // Reset
     setSource('');
     setAmount('');
-    setFrequency('Monthly');
+    setFrequency('monthly');
   };
 
   return (
@@ -53,10 +53,10 @@ const IncomeForm = ({ onAdd }) => {
           onChange={(e) => setFrequency(e.target.value)}
           className={styles.select}
         >
-          <option value="Monthly">Monthly</option>
-          <option value="Bi-weekly">Bi-Weekly</option>
-          <option value="Weekly">Weekly</option>
-          <option value="One-time">One-time</option>
+          <option value="monthly">Monthly</option>
+          <option value="bi-weekly">Bi-Weekly</option>
+          <option value="weekly">Weekly</option>
+          <option value="one-time">One-time</option>
         </select>
       </label>
 

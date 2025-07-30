@@ -26,7 +26,7 @@ const ExpenseForm = ({ onAdd }) => {
     const diffMs = end - now;
     const periods = msPerPeriod[frequency] || Infinity;
 
-    return frequency === 'One-time' ? 1 : Math.ceil(diffMs / periods);
+    return frequency === 'one-time' ? 1 : Math.ceil(diffMs / periods);
   };
 
   const handleSubmit = (e) => {
@@ -47,7 +47,7 @@ const ExpenseForm = ({ onAdd }) => {
 
     setName('');
     setCost('');
-    setFrequency('Monthly');
+    setFrequency('monthly');
     setEndDate('');
     setCategory('');
     setPayer('');
@@ -84,10 +84,10 @@ const ExpenseForm = ({ onAdd }) => {
           onChange={(e) => setFrequency(e.target.value)}
           className={styles.select}
         >
-          <option value="Monthly">Monthly</option>
-          <option value="Bi-weekly">Bi-Weekly</option>
-          <option value="Weekly">Weekly</option>
-          <option value="One-time">One-time</option>
+          <option value="monthly">Monthly</option>
+          <option value="bi-weekly">Bi-Weekly</option>
+          <option value="weekly">Weekly</option>
+          <option value="one-time">One-time</option>
         </select>
       </label>
 
@@ -103,12 +103,16 @@ const ExpenseForm = ({ onAdd }) => {
 
       <label>
         Category
-        <input
-          type="text"
+        <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className={styles.input}
-        />
+          className={styles.select}
+          required
+        >
+          <option value="need">Need</option>
+          <option value="want">Want</option>
+          <option value="saving">Saving</option>
+        </select>
       </label>
 
       <label>
