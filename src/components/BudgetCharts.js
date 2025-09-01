@@ -56,7 +56,7 @@ const BudgetCharts = ({ incomes, expenses }) => {
   expenses.forEach((e) => {
     if (e.frequency === 'monthly') {
       const category = e.category || 'Uncategorized';
-      categoryTotals[category] = (categoryTotals[category] || 0) + e.cost;
+      categoryTotals[category] = (categoryTotals[category] || 0) + Number(e.cost);
     }
   });
 
@@ -74,6 +74,7 @@ const BudgetCharts = ({ incomes, expenses }) => {
       },
     ],
   };
+
 
   return (
     <div className={styles.chartsContainer}>

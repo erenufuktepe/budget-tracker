@@ -9,7 +9,7 @@ const IncomeTable = ({ incomes, onDelete, onEdit, editingId, onSaveEdit }) => {
   };
 
   const capitalizeFirst = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str ? str.charAt(0).toUpperCase() + str.slice(1) : "-";
   }
 
   if (incomes.length === 0) return <p>No income added yet.</p>;
@@ -41,7 +41,7 @@ const IncomeTable = ({ incomes, onDelete, onEdit, editingId, onSaveEdit }) => {
                   <input
                     className={styles.input}
                     type="number"
-                    value={editValues.amount}
+                    value={Number(editValues.amount)}
                     onChange={(e) => handleChange("amount", e.target.value)}
                   />
                 </td>
@@ -75,7 +75,7 @@ const IncomeTable = ({ incomes, onDelete, onEdit, editingId, onSaveEdit }) => {
             ) : (
               <tr key={inc.id}>
                 <td className={styles.td}>{inc.source}</td>
-                <td className={styles.td}>${inc.amount.toFixed(2)}</td>
+                <td className={styles.td}>${Number(inc.amount).toFixed(2)}</td>
                 <td className={styles.td}>{capitalizeFirst(inc.frequency)}</td>
                 <td className={styles.td}>
                   <button

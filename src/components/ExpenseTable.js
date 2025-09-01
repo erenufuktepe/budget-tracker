@@ -15,7 +15,7 @@ const ExpenseTable = ({
   };
 
   const capitalizeFirst = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str ? str.charAt(0).toUpperCase() + str.slice(1) : "-"; 
   }
 
 
@@ -71,7 +71,7 @@ const ExpenseTable = ({
                   <input
                     className={styles.input}
                     type="number"
-                    value={editValues.cost}
+                    value={Number(editValues.cost)}
                     onChange={(e) => handleChange("cost", e.target.value)}
                   />
                 </td>
@@ -132,7 +132,7 @@ const ExpenseTable = ({
                   </button>
                   <button
                     className={`${styles.actionButton} ${styles.cancel}`}
-                    onClick={() => onEdit(null)} // ✅ Resets editing state
+                    onClick={() => onEdit(null)}
                   >
                     Cancel
                   </button>
@@ -141,7 +141,7 @@ const ExpenseTable = ({
             ) : (
               <tr key={exp.id}>
                 <td className={styles.td}>{exp.name}</td>
-                <td className={styles.td}>${exp.cost.toFixed(2)}</td>
+                <td className={styles.td}>${Number(exp.cost).toFixed(2)}</td>
                 <td className={styles.td}>{capitalizeFirst(exp.frequency)}</td>
                 <td className={styles.td}>{exp.endDate || "-"}</td>
                 <td className={styles.td}>{exp.remainingPayments ?? "-"}</td>

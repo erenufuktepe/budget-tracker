@@ -72,14 +72,14 @@ const BudgetManager = () => {
           "one-time": 1,
         }[income.frequency] || 1;
 
-      return sum + income.amount * multiplier;
+      return sum + Number(income.amount) * multiplier;
     }, 0);
   };
 
   const getMonthlyExpenseTotal = () => {
     return expenses
       .filter((exp) => exp.frequency === "monthly")
-      .reduce((sum, exp) => sum + exp.cost, 0);
+      .reduce((sum, exp) => sum + Number(exp.cost), 0);
   };
 
   return (
